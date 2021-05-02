@@ -1,6 +1,7 @@
 extends: [react-app]
+plugins: [prettier]
 rules:
-  semi: [error, never]
+  prettier/prettier: warn
 overrides:
-- files: ["**/*.ts?(x)"]
-  rules: {}
+  - files: ['**/*.ts?(x)']
+    rules: {}
