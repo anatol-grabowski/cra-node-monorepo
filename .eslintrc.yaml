@@ -1,4 +1,4 @@
-extends: [react-app]
+extends: [prettier]
 plugins: [prettier]
 rules:
   prettier/prettier: warn
