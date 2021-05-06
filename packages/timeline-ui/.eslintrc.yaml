@@ -1,1 +1,6 @@
-extends: [../../.eslintrc.yaml, react-app]
+extends: [../../.eslintrc.yaml, react-app, react-app/jest]
+rules: {}
+overrides:
+  - files: ['**/*.stories.*']
+    rules:
+      import/no-anonymous-default-export: off
