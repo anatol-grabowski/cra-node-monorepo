@@ -1,0 +1,35 @@
+version: '3'
+services:
+  timeline-backend:
+    image: node:16.1.0-alpine3.9
+    ports:
+      - '8080:8080'
+    volumes:
+      - .:/app
+    depends_on:
+      - timeline-db
+    environment:
+      - DEBUG
+      - MONGODB_URI=mongodb://timeline-db:27017/timelines
+      - PORT=8080
+    working_dir: /app
+    entrypoint: npm run watch
+
+  timeline-frontend:
+    # use stretch i.o. alpine to be able to use OS dependent node-sass binary from Linux host
+    image: node:16.1.0-stretch-slim
+    ports:
+      - '3000:3000'
+    volumes:
+      - ../data-net-frontend:/app
+    depends_on:
+      - timeline-backend
+    environment:
+      - REACT_APP_API_URL=http://localhost:8080
+    working_dir: /app
+    entrypoint: npm run start
+
+  timeline-db:
+    image: mongo:4.4.5-bionic
+    ports:
+      - '27017:27017'
