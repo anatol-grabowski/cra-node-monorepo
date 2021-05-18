@@ -22,3 +22,4 @@ overrides:
       '@typescript-eslint/ban-types': off
       '@typescript-eslint/no-floating-promises': error # requires parserOptions.project to be set
       '@typescript-eslint/no-explicit-any': off
+      '@typescript-eslint/no-empty-function': off
