@@ -1,6 +1,6 @@
 import os, { NetworkInterfaceInfo } from 'os'
 
-export function getIps(): [ifaceName: string, ip: string][] {
+export function getOwnIps(): [ifaceName: string, ip: string][] {
   const res: [ifaceName: string, ip: string][] = []
   const ifaces = os.networkInterfaces()
   for (const [ifaceName, nets] of Object.entries(ifaces)) {
