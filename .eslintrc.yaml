@@ -4,11 +4,12 @@ plugins:
   - prettier
 rules:
   prettier/prettier: warn
+  prefer-rest-params: off
 parserOptions:
   ecmaVersion: 2020
 overrides:
   - files: ['**/*.ts?(x)']
-    extends:
+    extends: # some of the rules above may get reset by 'extends' so they have to be repeated below
       - 'plugin:@typescript-eslint/recommended'
     plugins:
       - '@typescript-eslint'
@@ -18,8 +19,11 @@ overrides:
       project:
         - './tsconfig.base.json' # don't know which value should be here but seems to be working
     rules:
+      prefer-rest-params: off
       '@typescript-eslint/explicit-module-boundary-types': off
       '@typescript-eslint/ban-types': off
       '@typescript-eslint/no-floating-promises': error # requires parserOptions.project to be set
       '@typescript-eslint/no-explicit-any': off
       '@typescript-eslint/no-empty-function': off
+      '@typescript-eslint/no-var-requires': off
+      '@typescript-eslint/no-inferrable-types': off

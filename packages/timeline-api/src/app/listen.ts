@@ -13,7 +13,7 @@ function logServerListening(port: number) {
 }
 
 export async function listen(port: number) {
-  const server = createHttpWsServer(app.callback, wss)
+  const server = createHttpWsServer(app.callback(), wss)
   await httpServerListenPromise(server, port)
   logServerListening(port)
   return server

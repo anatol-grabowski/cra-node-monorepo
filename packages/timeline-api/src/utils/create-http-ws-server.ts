@@ -3,7 +3,7 @@ import * as WebSocket from 'ws'
 
 /**
  * Assume `wsServer` to be created with `noServer: true` option.
- * `httpHandler` can be accessed as `app.handler` in `express` or as `app.callback` in `koa`.
+ * `httpHandler` can be accessed as `app.handler` in `express` or as `app.callback()` in `koa`.
  *
  * Create http server.
  * Handle 'request' events via `httpHandler`.
