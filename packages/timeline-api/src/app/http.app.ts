@@ -1,9 +1,9 @@
 import Koa from 'koa'
 import c2k from 'koa-connect'
 import bodyParser from 'koa-bodyparser'
-import { requestLoggerMiddleware } from '../middleware/request-logger.middleware'
-import { responseLoggerMiddleware } from '../middleware/response-logger.middleware'
-import { errorHandlerMiddleware } from '../middleware/error-handler.middleware'
+import { requestLoggerMiddleware } from '@common/middleware/request-logger.middleware'
+import { responseLoggerMiddleware } from '@common/middleware/response-logger.middleware'
+import { errorHandlerMiddleware } from '@common/middleware/error-handler.middleware'
 
 export const app = new Koa()
 

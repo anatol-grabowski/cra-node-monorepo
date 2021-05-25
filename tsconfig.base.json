@@ -1,6 +1,8 @@
 {
   "compilerOptions": {
+    "baseUrl": "./", // required by 'tsconfig-paths-webpack-plugin'
     "paths": {
+      // 'paths' require 'tsconfig-paths-webpack-plugin' to build by webpack
       "@common/*": ["./packages/common/src/*"]
     },
     "target": "es6",

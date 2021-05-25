@@ -1,4 +1,5 @@
 const path = require('path')
+const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
   entry: './src/main.ts',
@@ -9,7 +10,7 @@ module.exports = {
   target: 'node',
   resolve: {
     extensions: ['.tsx', '.ts', '.js'],
-    plugins: [],
+    plugins: [new TsconfigPathsPlugin({})],
   },
   module: {
     rules: [

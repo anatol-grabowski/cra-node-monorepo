@@ -1,8 +1,8 @@
 import { app } from './http.app'
 import { wss } from './ws.app'
-import { getOwnIps } from '../utils/get-own-ips'
-import { createHttpWsServer } from '../utils/create-http-ws-server'
-import { httpServerListenPromise } from '../utils/http-server-listen-promise'
+import { getOwnIps } from '@common/utils/get-own-ips'
+import { createHttpWsServer } from '@common/utils/create-http-ws-server'
+import { httpServerListenPromise } from '@common/utils/http-server-listen-promise'
 
 function logServerListening(port: number) {
   const ownIps = getOwnIps()
