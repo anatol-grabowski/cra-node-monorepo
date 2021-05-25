@@ -7,10 +7,10 @@
     "test": "jest",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
-    "build": "webpack --mode development --stats-error-details",
+    "build": "webpack --mode=production",
     "clean": "rm -rf ./dist",
     "start": "node dist/main.js",
-    "watch": "yarn run build --watch",
+    "watch": "webpack --mode development --stats-error-details --watch",
     "deploy": "git push -f heroku master",
     "backup": "node -r dotenv/config scripts/backup-db.js"
   },
