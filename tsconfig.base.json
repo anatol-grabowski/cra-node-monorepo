@@ -1,8 +1,7 @@
 {
   "compilerOptions": {
-    "baseUrl": "./", // required by 'tsconfig-paths-webpack-plugin'
+    "baseUrl": "./",
     "paths": {
-      // 'paths' require 'tsconfig-paths-webpack-plugin' to build by webpack
       "@common/*": ["./packages/common/src/*"]
     },
     "target": "es6",
@@ -17,7 +16,7 @@
     "moduleResolution": "node",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": false, // should be true if tsc is used only for typechecking
+    "noEmit": false,
     "noImplicitAny": false
   }
 }

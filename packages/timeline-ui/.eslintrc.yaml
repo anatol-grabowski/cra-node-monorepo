@@ -7,3 +7,7 @@ overrides:
   - files: ['**/*.stories.*']
     rules:
       import/no-anonymous-default-export: off
+  - files: ['**/*.ts?(x)']
+    parserOptions:
+      project:
+        - './tsconfig.json' # projects are resolved relative to cwd (could have used __dirname in .eslintrc.js)

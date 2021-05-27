@@ -4,7 +4,8 @@
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],
     "jsx": "react-jsx",
-    "isolatedModules": true
+    "isolatedModules": true,
+    "noEmit": true
   },
   "include": ["src"]
 }
