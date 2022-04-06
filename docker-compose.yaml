@@ -27,7 +27,7 @@ services:
     environment:
       - REACT_APP_API_URL=http://localhost:8080
     working_dir: /app/packages/web
-    entrypoint: npm run start
+    entrypoint: npm run watch
 
   db:
     image: mongo:4.4.5-bionic

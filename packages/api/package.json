@@ -8,11 +8,11 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "build": "webpack --mode=production",
+    "build:watch": "webpack --mode development --stats-error-details --watch",
     "clean": "rm -rf ./dist",
     "start": "node dist/main.js",
-    "build:watch": "webpack --mode development --stats-error-details --watch",
-    "start:watch": "ON_INITIAL_BUILD_END='yarn run serve:watch' yarn run build:watch",
-    "watch": "webpack --mode development --stats-error-details --watch",
+    "start:watch": "nodemon --ext js --watch ./dist --exec node ./dist/main.js",
+    "watch": "ON_INITIAL_BUILD_END='yarn run start:watch' yarn run build:watch",
     "deploy": "git push -f heroku master",
     "backup": "node -r dotenv/config scripts/backup-db.js"
   },
@@ -35,6 +35,7 @@
     "tsconfig-paths-webpack-plugin": "^3.5.1",
     "typescript": "^4.2.4",
     "webpack": "^5.37.1",
-    "webpack-cli": "^4.7.0"
+    "webpack-cli": "^4.7.0",
+    "webpack-shell-plugin-next": "^2.2.2"
   }
 }

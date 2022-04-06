@@ -14,6 +14,7 @@ Configs:
     - comments should be removed from tsconfigs for compatibility with `react-app-rewire-alias`
   - `noEmit` shoud be true for **CRA** (should be true if tsc is used only for typechecking)
 - **Node** `webpack` build config @ `webpack.config.js`
+  - `webpack-shell-plugin-next` to watch and rerun built bundle with `nodemon`
 - **CRA** `react-app-rewired` webpack config overrides @ `config-overrides.js`
   - used for tsconfig `paths` to work with CRA (via `react-app-rewire-alias`)
 - `browserslist` list of supported browsers for **CRA** @ `package.json`

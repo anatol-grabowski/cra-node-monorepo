@@ -1,5 +1,6 @@
 const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
+const WebpackShellPlugin = require('webpack-shell-plugin-next')
 
 module.exports = function getConfig(env, { mode }) {
   const config = {
@@ -25,6 +26,7 @@ module.exports = function getConfig(env, { mode }) {
     optimization: {
       minimize: false,
     },
+    plugins: [],
     stats: {
       hash: false,
       builtAt: false,
@@ -55,6 +57,16 @@ module.exports = function getConfig(env, { mode }) {
         message: /Critical dependency: the request of a dependency is an expression/,
       },
     ]
+  }
+  if (process.env.ON_INITIAL_BUILD_END) {
+    const wpShellPlugin = new WebpackShellPlugin({
+      onBuildEnd: {
+        scripts: [process.env.ON_INITIAL_BUILD_END],
+        blocking: false,
+        parallel: true,
+      },
+    })
+    config.plugins.push(wpShellPlugin)
   }
   return config
 }

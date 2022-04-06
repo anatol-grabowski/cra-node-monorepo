@@ -1,6 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
+  "private": true,
   "main": "index.js",
   "author": "tot <grabantot@gmail.com>",
   "license": "MIT",
@@ -23,7 +24,6 @@
     "prettier": "^2.2.1",
     "typescript": "^4.2.4"
   },
-  "private": true,
   "workspaces": [
     "packages/*"
   ],
