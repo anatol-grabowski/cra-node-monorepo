@@ -7,7 +7,7 @@ export class TimelineRepository {
     this.collection = db.collection('timelines')
   }
 
-  async upsertTimeline() {
+  async upsertTimeline(doc) {
     const query = {}
     await this.collection.replaceOne(query, doc, { upsert: true })
   }

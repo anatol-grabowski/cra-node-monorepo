@@ -1,5 +1,5 @@
 {
-  "name": "timeline-api",
+  "name": "api",
   "version": "1.0.0",
   "private": true,
   "license": "MIT",
@@ -10,6 +10,8 @@
     "build": "webpack --mode=production",
     "clean": "rm -rf ./dist",
     "start": "node dist/main.js",
+    "build:watch": "webpack --mode development --stats-error-details --watch",
+    "start:watch": "ON_INITIAL_BUILD_END='yarn run serve:watch' yarn run build:watch",
     "watch": "webpack --mode development --stats-error-details --watch",
     "deploy": "git push -f heroku master",
     "backup": "node -r dotenv/config scripts/backup-db.js"
