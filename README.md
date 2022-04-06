@@ -1,4 +1,10 @@
-Configs:
+## Run
+
+- `cd packages/web && yarn run watch`
+- `cd packages/api && yarn run watch`
+- docker-compose doesn't work yet
+
+## Configs
 
 - `workspaces` monorepo config @ `package.json`
 - `husky` git hooks @ `.husky/` (runs lint-staged on precommit)

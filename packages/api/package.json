@@ -11,7 +11,7 @@
     "build:watch": "webpack --mode development --stats-error-details --watch",
     "clean": "rm -rf ./dist",
     "start": "node dist/main.js",
-    "start:watch": "nodemon --ext js --watch ./dist --exec node ./dist/main.js",
+    "start:watch": "nodemon --ext js --watch ./dist --exec node --inspect=5858 ./dist/main.js",
     "watch": "ON_INITIAL_BUILD_END='yarn run start:watch' yarn run build:watch",
     "deploy": "git push -f heroku master",
     "backup": "node -r dotenv/config scripts/backup-db.js"
