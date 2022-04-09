@@ -22,6 +22,8 @@
     "koa-bodyparser": "^4.3.0",
     "koa-connect": "^2.1.0",
     "mongodb": "^3.6.9",
+    "mongodb-client-encryption": "^2.0.0",
+    "openai": "^2.0.5",
     "ws": "^7.4.5"
   },
   "devDependencies": {
