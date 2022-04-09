@@ -9,27 +9,29 @@ services:
     depends_on:
       - db
     environment:
-      - DEBUG
-      - MONGODB_URI=mongodb://db:27017/timelines
       - PORT=8080
+      - MONGODB_URI=mongodb://db:27017/timelines
+      - DEBUG
+      - TELEGRAM_BOT_TOKEN
+      - OPENAI_API_KEY
     user: '${UID}:${GID}'
     working_dir: /app/packages/api
     entrypoint: npm run watch
 
-  web:
-    # use stretch to be able to use OS dependent node-sass binary from Linux host
-    image: node:16.1.0-stretch-slim
-    ports:
-      - '3000:3000'
-    volumes:
-      - ./:/app
-    depends_on:
-      - api
-    environment:
-      - REACT_APP_API_URL=http://localhost:8080
-    user: '${UID}:${GID}'
-    working_dir: /app/packages/web
-    entrypoint: npm run watch
+  # web:
+  #   # use stretch to be able to use OS dependent node-sass binary from Linux host
+  #   image: node:16.1.0-stretch-slim
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - ./:/app
+  #   depends_on:
+  #     - api
+  #   environment:
+  #     - REACT_APP_API_URL=http://localhost:8080
+  #   user: '${UID}:${GID}'
+  #   working_dir: /app/packages/web
+  #   entrypoint: npm run watch
 
   db:
     image: mongo:4.4.5-bionic
