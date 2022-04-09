@@ -47,7 +47,8 @@
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.9",
     "customize-cra": "^1.0.0",
-    "react-app-rewire-alias": "^1.0.3",
+    "react-app-alias": "^2.2.0",
+    "react-app-alias-ex": "^2.1.0",
     "react-app-rewired": "^2.1.8"
   },
   "resolutions": {

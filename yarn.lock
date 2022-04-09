@@ -12647,6 +12647,18 @@ rc@^1.2.8:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
+react-app-alias-ex@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/react-app-alias-ex/-/react-app-alias-ex-2.1.0.tgz#1e062ed002798371cc184ff3c1b094cc0592c458"
+  integrity sha512-MTr2yBSlU68ptmrukT8F6Fp6K6dp4Ui+uX/qV28oqGD+v+cLB+mOAnprvQOuG0zS6fW+X9Xk0QzaG6t30pQvHQ==
+  dependencies:
+    react-app-alias "^2.0.0"
+
+react-app-alias@^2.0.0, react-app-alias@^2.2.0:
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/react-app-alias/-/react-app-alias-2.2.0.tgz#2320e9fa28188811020c3d9791e0e3424520006c"
+  integrity sha512-LaDIn+mbhimcvatV1DiBjh+8Lg6f3shEWqwy6IywfT3J3IIiEOTncChEYWTrnIvV9R97bRQoL9a95uAOQipyTA==
+
 react-app-polyfill@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/react-app-polyfill/-/react-app-polyfill-2.0.0.tgz#a0bea50f078b8a082970a9d853dc34b6dcc6a3cf"
@@ -12658,11 +12670,6 @@ react-app-polyfill@^2.0.0:
     raf "^3.4.1"
     regenerator-runtime "^0.13.7"
     whatwg-fetch "^3.4.1"
-
-react-app-rewire-alias@^1.0.3:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/react-app-rewire-alias/-/react-app-rewire-alias-1.0.3.tgz#02a89295a033fe811c4082af2381ce6f37b5506b"
-  integrity sha512-rqeDpqPg07lY16MC1geOBtopEy5hQp5vGPh4xS6gyPyP+uVU1tgYagRyiwDfa6/QvlMU2RmmefIoT5kUpfzxjQ==
 
 react-app-rewired@^2.1.8:
   version "2.1.8"

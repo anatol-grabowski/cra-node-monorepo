@@ -16,13 +16,13 @@
 - `typescript` config @ `tsconfig.base.json` extended in packages @ `tsconfig.json`
   - `paths` require `tsconfig-paths-webpack-plugin` for aliases to work with **Node**
     - `baseUrl` is required by `tsconfig-paths-webpack-plugin`
-  - `paths` require `react-app-rewire-alias` for aliases to work with **CRA**
-    - comments should be removed from tsconfigs for compatibility with `react-app-rewire-alias`
+  - `paths` require `react-app-alias-ex` for aliases to work with **CRA**
+    - comments should be removed from tsconfigs for compatibility with `react-app-alias-ex`
   - `noEmit` shoud be true for **CRA** (should be true if tsc is used only for typechecking)
 - **Node** `webpack` build config @ `webpack.config.js`
   - `webpack-shell-plugin-next` to watch and rerun built bundle with `nodemon`
 - **CRA** `react-app-rewired` webpack config overrides @ `config-overrides.js`
-  - used for tsconfig `paths` to work with CRA (via `react-app-rewire-alias`)
+  - used for tsconfig `paths` to work with CRA (via `react-app-alias-ex` which requires `react-app-alias` to be installed)
 - `browserslist` list of supported browsers for **CRA** @ `package.json`
 - `resolutions` config @ `package.json` avoids issues with `babel-loader` versions for **CRA**
 - `asdf` config @ `.tool-versions`
