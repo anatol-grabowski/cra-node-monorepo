@@ -1,0 +1,29 @@
+{
+  "name": "job",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:cov": "jest --coverage",
+    "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
+    "build:watch": "webpack --mode development --stats-error-details --watch",
+    "clean": "rm -rf ./dist",
+    "start": "node dist/main.js",
+    "start:watch": "nodemon --ext js --watch ./dist --exec node --inspect=5858 ./dist/main.js",
+    "watch": "ON_INITIAL_BUILD_END='yarn run start:watch' yarn run build:watch"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^15.3.0",
+    "nodemon": "^2.0.7",
+    "ts-loader": "^9.2.2",
+    "ts-node": "^9.1.1",
+    "tsconfig-paths-webpack-plugin": "^3.5.1",
+    "webpack": "^5.37.1",
+    "webpack-cli": "^4.7.0",
+    "webpack-shell-plugin-next": "^2.2.2"
+  }
+}

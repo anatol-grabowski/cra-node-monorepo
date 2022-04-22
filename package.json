@@ -14,14 +14,18 @@
     "babel-loader": "8.1.0"
   },
   "dependencies": {
+    "@nestjs/common": "^8.4.4",
+    "@nestjs/core": "^8.4.4",
     "@typescript-eslint/eslint-plugin": "^4.23.0",
     "@typescript-eslint/parser": "^4.23.0",
+    "axios": "^0.26.1",
     "eslint": "^7.25.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
     "husky": "^6.0.0",
     "lint-staged": "^10.5.4",
     "prettier": "^2.2.1",
+    "reflect-metadata": "^0.1.13",
     "sleep-promise": "^9.1.0",
     "typescript": "^4.6.3"
   },

@@ -19,6 +19,10 @@
   - `paths` require `react-app-alias-ex` for aliases to work with **CRA**
     - comments should be removed from tsconfigs for compatibility with `react-app-alias-ex`
   - `noEmit` shoud be true for **CRA** (should be true if tsc is used only for typechecking)
+- nestjs for DI
+  - `@nestjs/common` - DI primitives (Module, Provider, Injectable)
+    - requires `reflect-metadata`
+  - `@nestjs/core` - bootstrap (NestFactory)
 - **Node** `webpack` build config @ `webpack.config.js`
   - `webpack-shell-plugin-next` to watch and rerun built bundle with `nodemon`
 - **CRA** `react-app-rewired` webpack config overrides @ `config-overrides.js`

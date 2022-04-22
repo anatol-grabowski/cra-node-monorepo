@@ -1,0 +1,9 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "outDir": "./dist", // controlled by webpack, left for compatibility with tsc
+    "module": "commonjs",
+    "isolatedModules": false,
+    "emitDecoratorMetadata": true
+  }
+}
