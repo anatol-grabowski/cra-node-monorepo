@@ -4,6 +4,7 @@
     "paths": {
       "@common/*": ["./packages/common/src/*"]
     },
+    "inlineSourceMap": true,
     "target": "es6",
     "allowJs": true,
     "skipLibCheck": true,
@@ -21,5 +22,8 @@
     "useUnknownInCatchVariables": false,
     "strictNullChecks": false,
     "experimentalDecorators": true
+  },
+  "ts-node": {
+    "files": true
   }
 }
