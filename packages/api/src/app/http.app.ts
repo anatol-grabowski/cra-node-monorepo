@@ -1,4 +1,5 @@
 import Koa from 'koa'
+import Router from 'koa-router'
 import c2k from 'koa-connect'
 import bodyParser from 'koa-bodyparser'
 import { requestLoggerMiddleware } from '@common/middleware/request-logger.middleware'
@@ -12,6 +13,9 @@ app.use(errorHandlerMiddleware())
 app.use(bodyParser())
 app.use(requestLoggerMiddleware())
 
-app.use((ctx) => {
+const router = new Router()
+router.get('/', (ctx) => {
   ctx.body = 'Hello Koa'
 })
+
+app.use(router.routes()).use(router.allowedMethods())

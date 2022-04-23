@@ -8,6 +8,7 @@
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "build": "webpack --mode=production",
+    "build:dev": "webpack --mode=development",
     "build:watch": "webpack --mode development --stats-error-details --watch",
     "clean": "rm -rf ./dist",
     "start": "node dist/main.js",
@@ -21,6 +22,7 @@
     "koa": "^2.13.1",
     "koa-bodyparser": "^4.3.0",
     "koa-connect": "^2.1.0",
+    "koa-router": "^10.1.1",
     "mongodb": "^3.6.9",
     "mongodb-client-encryption": "^2.0.0",
     "openai": "^2.0.5",
@@ -29,6 +31,7 @@
   "devDependencies": {
     "@types/koa": "^2.13.1",
     "@types/koa-bodyparser": "^4.3.0",
+    "@types/koa-router": "^7.4.4",
     "@types/mongodb": "^3.6.16",
     "@types/node": "^15.3.0",
     "@types/ws": "^7.4.4",

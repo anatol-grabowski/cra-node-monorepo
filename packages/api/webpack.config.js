@@ -1,4 +1,5 @@
 const path = require('path')
+const webpack = require('webpack')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 const WebpackShellPlugin = require('webpack-shell-plugin-next')
 
@@ -26,7 +27,34 @@ module.exports = function getConfig(env, { mode }) {
     optimization: {
       minimize: false,
     },
-    plugins: [],
+    plugins: [
+      new webpack.IgnorePlugin({
+        checkResource(resource) {
+          const lazyImports = [
+            '@nestjs/microservices',
+            '@nestjs/platform-express',
+            '@nestjs/grahpql',
+            '@nestjs/microservices/microservices-module',
+            '@nestjs/websockets/socket-module',
+            'cache-manager',
+            'class-validator',
+            'class-transformer',
+          ]
+          // if (resource.startsWith('@nestjs/')) {
+          //   return false
+          // }
+          if (!lazyImports.includes(resource)) {
+            return false
+          }
+          try {
+            require.resolve(resource)
+          } catch (err) {
+            return true
+          }
+          return false
+        },
+      }),
+    ],
     stats: {
       hash: false,
       builtAt: false,
@@ -53,7 +81,6 @@ module.exports = function getConfig(env, { mode }) {
       { module: /\/ws\/lib\//, message: /Can't resolve 'utf-8-validate'/ },
       { module: /\/ws\/lib\//, message: /Can't resolve 'bufferutil'/ },
       {
-        module: /\/any-promise\//,
         message: /Critical dependency: the request of a dependency is an expression/,
       },
     ]
