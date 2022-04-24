@@ -23,7 +23,7 @@ module.exports = function getConfig(env, { mode }) {
         },
       ],
     },
-    devtool: 'inline-source-map',
+    devtool: 'eval-source-map',
     optimization: {
       minimize: false,
     },

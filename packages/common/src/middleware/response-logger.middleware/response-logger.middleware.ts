@@ -20,7 +20,12 @@ export function responseLoggerMiddleware({ maxBytes = 1024, maxCharsLoggedIfOver
         totalBytes,
         executionTimeMs: Date.now() - startTime,
       }
-      console.log(`HTTP response '${request.method} ${request.url}':\n`, logObj)
+      console.log(
+        'HTTP response',
+        response.statusCode,
+        `'${request.method} ${request.url}':\n`,
+        logObj,
+      )
     })
     next()
   }

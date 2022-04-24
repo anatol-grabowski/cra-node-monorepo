@@ -32,7 +32,7 @@ export interface Response {
   body: Body
 }
 
-export type Handler<T = any> = (ctx: Context<T>) => Promise<void>
+export type Handler<T = any> = (ctx: Context<T>) => void | Promise<void>
 
 export interface Context<T = any> {
   /**

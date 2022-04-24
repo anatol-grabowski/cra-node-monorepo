@@ -6,7 +6,7 @@ export function requestLoggerMiddleware() {
       query: { ...ctx.request.query },
       body: ctx.request.body,
     }
-    console.log(`HTTP request  '${ctx.method} ${ctx.originalUrl}':\n`, logObj)
+    console.log(`HTTP request  '${ctx.method} ${ctx.href}':\n`, logObj)
     await next()
   }
 }

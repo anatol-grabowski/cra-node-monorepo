@@ -1,12 +1,13 @@
 import { Request, Response, Context, Handler, Router } from './types'
 import KoaRouter, { IMiddleware, RouterContext } from 'koa-router'
 import qs from 'qs'
+import util from 'util'
 
 class Converter {
   requestFromKoa(ctx: RouterContext): Request {
     const request: Request = {
-      method: ctx.request.method as Request['method'],
-      url: new URL(ctx.request.originalUrl),
+      method: ctx.request.method.toLowerCase() as Request['method'],
+      url: ctx.request.URL,
       headers: ctx.request.headers,
       path: ctx.params,
       query: qs.parse(ctx.request.querystring),
@@ -16,7 +17,7 @@ class Converter {
   }
 
   responseFromKoa(ctx: RouterContext): Response {
-    const response: Response = {
+    const response = {
       get status(): number {
         return ctx.response.status
       },
@@ -36,6 +37,13 @@ class Converter {
       },
       set headers(value: Response['headers']) {
         ctx.response.headers = value
+      },
+      [util.inspect.custom]() {
+        return {
+          status: this.status,
+          headers: { ...this.headers },
+          body: this.body,
+        }
       },
     }
     return response
@@ -66,7 +74,7 @@ class Converter {
 const conv = new Converter()
 
 export class RouterKoaService implements Router {
-  protected koaRouter = new KoaRouter()
+  koaRouter = new KoaRouter()
 
   protected addMethod(method: Request['method'], route: string, handler: Handler): void {
     const koaHandler = conv.handlerToKoa(handler)
