@@ -1,30 +1,18 @@
-import { Module, Injectable } from '@nestjs/common'
+import { Module } from '@nestjs/common'
+import { AppKoa } from '@common/services/app'
+import { AuthController } from './features/auth/auth.controller'
 
-@Injectable()
-class AppRepository {
-  sayHi() {
-    console.log('app repository')
-    console.log('Hello')
-  }
-}
-
-@Injectable()
-class AppService {
-  constructor(private appRepository: AppRepository) {}
-  sayHi() {
-    console.log('app service')
-    this.appRepository.sayHi()
-  }
-}
+const port = Number(process.env.PORT) || 8081
 
 @Module({
   imports: [],
-  providers: [AppService],
+  providers: [{ useFactory: () => new AppKoa(port), provide: AppKoa }, AuthController],
 })
 export class MainModule {
-  constructor(private appService: AppService) {}
-  sayHi() {
-    console.log('app module')
-    this.appService.sayHi()
+  constructor(protected app: AppKoa, protected c: AuthController) {}
+
+  async run() {
+    this.app.use('', this.c)
+    await this.app.listen()
   }
 }

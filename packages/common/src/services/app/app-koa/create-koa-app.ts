@@ -2,9 +2,9 @@ import Koa from 'koa'
 import Router from 'koa-router'
 import c2k from 'koa-connect'
 import bodyParser from 'koa-bodyparser'
-import { requestLoggerMiddleware } from '@common/middleware/request-logger.middleware'
-import { responseLoggerMiddleware } from '@common/middleware/response-logger.middleware'
-import { errorHandlerMiddleware } from '@common/middleware/error-handler.middleware'
+import { requestLoggerMiddleware } from '@common/middlewares/request-logger.middleware'
+import { responseLoggerMiddleware } from '@common/middlewares/response-logger.middleware'
+import { errorHandlerMiddleware } from '@common/middlewares/error-handler.middleware'
 
 export function createHttpApp() {
   const app = new Koa()

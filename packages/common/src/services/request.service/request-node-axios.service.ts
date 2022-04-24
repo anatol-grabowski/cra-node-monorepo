@@ -3,11 +3,13 @@ import qs from 'qs'
 import http from 'http'
 import https from 'https'
 import { RequestOptions, Response, RequestService, RequestServiceError } from './types'
+import { Injectable } from '@nestjs/common'
 
 export interface RequestNodeAxiosServiceOptions {
   maxSockets?: number
 }
 
+@Injectable()
 export class RequestNodeAxiosService implements RequestService {
   protected axios: AxiosInstance
 

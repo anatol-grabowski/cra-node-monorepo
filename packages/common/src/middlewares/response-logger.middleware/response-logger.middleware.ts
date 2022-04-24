@@ -15,7 +15,7 @@ export function responseLoggerMiddleware({ maxBytes = 1024, maxCharsLoggedIfOver
         ? `${buffer.toString('utf8').slice(0, maxCharsLoggedIfOver)}...`
         : buffer.toString('utf8')
       const logObj = {
-        status: response.statusCode,
+        // status: response.statusCode,
         body,
         totalBytes,
         executionTimeMs: Date.now() - startTime,

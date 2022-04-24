@@ -1,7 +1,8 @@
-import { Request, Response, Context, Handler, Router } from './types'
+import { Request, Response, Context, Handler } from './types'
 import KoaRouter, { IMiddleware, RouterContext } from 'koa-router'
 import qs from 'qs'
 import util from 'util'
+import { routerSymbol, Contr } from './decorators'
 
 class Converter {
   requestFromKoa(ctx: RouterContext): Request {
@@ -73,7 +74,7 @@ class Converter {
 
 const conv = new Converter()
 
-export class RouterKoaService implements Router {
+export class Router {
   koaRouter = new KoaRouter()
 
   protected addMethod(method: Request['method'], route: string, handler: Handler): void {
@@ -97,13 +98,18 @@ export class RouterKoaService implements Router {
     this.addMethod('delete', route, handler)
   }
 
-  use(route: string, handler: Handler | Router): void {
-    if (handler instanceof this.constructor) {
-      this.koaRouter.use(route, (handler as RouterKoaService).koaRouter.routes())
-      this.koaRouter.use(route, (handler as RouterKoaService).koaRouter.allowedMethods())
-    } else {
-      const koaHandler = conv.handlerToKoa(handler as Handler)
-      this.koaRouter.use(route, koaHandler)
+  use(route: string, handler: Handler | Router | Contr): void {
+    if (handler[routerSymbol] != null) {
+      this.koaRouter.use(route, (handler[routerSymbol] as Router).koaRouter.routes())
+      this.koaRouter.use(route, (handler[routerSymbol] as Router).koaRouter.allowedMethods())
+      return
     }
+    if (handler instanceof this.constructor) {
+      this.koaRouter.use(route, (handler as Router).koaRouter.routes())
+      this.koaRouter.use(route, (handler as Router).koaRouter.allowedMethods())
+      return
+    }
+    const koaHandler = conv.handlerToKoa(handler as Handler)
+    this.koaRouter.use(route, koaHandler)
   }
 }
