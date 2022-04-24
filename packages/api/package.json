@@ -26,6 +26,7 @@
     "mongodb": "^3.6.9",
     "mongodb-client-encryption": "^2.0.0",
     "openai": "^2.0.5",
+    "qs": "^6.10.3",
     "ws": "^7.4.5"
   },
   "devDependencies": {
