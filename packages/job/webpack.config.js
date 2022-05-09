@@ -1,98 +1,22 @@
 const path = require('path')
-const webpack = require('webpack')
-const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
-const WebpackShellPlugin = require('webpack-shell-plugin-next')
+const { merge } = require('webpack-merge')
+const {
+  makeBaseConfig,
+  ignoreNestjsOptionalDependenciesPluginInstance,
+} = require('../../webpack.base')
 
-module.exports = function getConfig(env, { mode }) {
+module.exports = function makeConfig(env, argv) {
   const config = {
-    entry: './src/main.ts',
+    entry: {
+      main: './src/main.ts',
+    },
     output: {
-      filename: 'main.js',
-      path: path.resolve(__dirname, 'dist'),
+      filename: '[name].js',
+      libraryTarget: 'commonjs',
+      path: path.resolve(__dirname, 'build'),
     },
-    target: 'node',
-    resolve: {
-      extensions: ['.tsx', '.ts', '.js'],
-      plugins: [new TsconfigPathsPlugin({})],
-    },
-    module: {
-      rules: [
-        {
-          test: /\.tsx?$/,
-          use: 'ts-loader',
-        },
-      ],
-    },
-    devtool: 'eval-source-map',
-    optimization: {
-      minimize: false,
-    },
-    plugins: [
-      new webpack.IgnorePlugin({
-        checkResource(resource) {
-          // skip nestjs dependencies not essential for DI
-          const lazyImports = [
-            '@nestjs/microservices',
-            '@nestjs/platform-express',
-            '@nestjs/grahpql',
-            '@nestjs/microservices/microservices-module',
-            '@nestjs/websockets/socket-module',
-            'cache-manager',
-            'class-validator',
-            'class-transformer',
-          ]
-          // if (resource.startsWith('@nestjs/')) {
-          //   return false
-          // }
-          if (!lazyImports.includes(resource)) {
-            return false
-          }
-          try {
-            require.resolve(resource)
-          } catch (err) {
-            return true
-          }
-          return false
-        },
-      }),
-    ],
-    stats: {
-      hash: false,
-      builtAt: false,
-      assets: false,
-      entrypoints: true,
-      chunks: false,
-      chunkOrigins: false,
-      modules: false,
-      timings: true,
-      colors: true,
-      version: false,
-      modules: false,
-      reasons: false,
-      children: false,
-      source: false,
-      errorDetails: false,
-      publicPath: false,
-      warningsCount: true,
-      warnings: true,
-    },
+    plugins: [ignoreNestjsOptionalDependenciesPluginInstance],
   }
-  if (mode !== 'production') {
-    config.ignoreWarnings = [
-      {
-        message: /Critical dependency: the request of a dependency is an expression/,
-      },
-    ]
-  }
-  if (process.env.ON_INITIAL_BUILD_END) {
-    const wpShellPlugin = new WebpackShellPlugin({
-      onBuildEnd: {
-        scripts: [process.env.ON_INITIAL_BUILD_END],
-        blocking: false,
-        parallel: true,
-      },
-    })
-    config.plugins.push(wpShellPlugin)
-  }
-  return config
+
+  return merge(makeBaseConfig(env, argv), config)
 }

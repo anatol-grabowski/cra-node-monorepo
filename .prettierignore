@@ -1,0 +1,7 @@
+dist/
+build/
+out/
+built/
+coverage/
+# tsconfig gets formatted by CRA on build
+/packages/web/tsconfig.json

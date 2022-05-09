@@ -2,13 +2,17 @@ const path = require('path')
 
 module.exports = {
   extends: ['../../.eslintrc.yaml', 'react-app', 'react-app/jest'],
-  rules: {},
   overrides: [
     {
       files: ['**/*.stories.*'],
       rules: {
         'import/no-anonymous-default-export': 'off',
       },
+    },
+    {
+      extends: ['plugin:jsonc/recommended-with-jsonc'],
+      files: ['*.json', '*.json5', '*.jsonc'],
+      parser: 'jsonc-eslint-parser',
     },
     {
       files: ['**/*.ts?(x)'],
@@ -22,4 +26,5 @@ module.exports = {
       },
     },
   ],
+  rules: {},
 }

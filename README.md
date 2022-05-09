@@ -19,6 +19,7 @@
   - `paths` require `react-app-alias-ex` for aliases to work with **CRA**
     - comments should be removed from tsconfigs for compatibility with `react-app-alias-ex`
   - `noEmit` shoud be true for **CRA** (should be true if tsc is used only for typechecking)
+  - `outDir` controlled by webpack, left for compatibility wiht tsc
 - nestjs for DI
   - `@nestjs/common` - DI primitives (Module, Provider, Injectable)
     - requires `reflect-metadata`
@@ -31,5 +32,8 @@
 - `resolutions` config @ `package.json` avoids issues with `babel-loader` versions for **CRA**
 - `asdf` config @ `.tool-versions`
 - `docker-compose` config @ `docker-compose.yaml`
+- `SKIP_PREFLIGHT_CHECK=true` @ CRA `.env` avoids errors due to dependencies versions
+- `INLINE_RUNTIME_CHUNK=false` @ CRA `.env` disables inline scripts in output html which is required by browser-extension CSP
+- `PUBLIC_URL=.` @ CRA `.env` doesn't require for app assets to be served from host root (/)
 - `jest` @ `???`
 - `storybook` @ `???`

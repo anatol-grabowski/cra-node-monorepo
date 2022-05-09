@@ -1,7 +1,17 @@
 {
   "name": "web",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "build": "react-app-rewired build",
+    "build-storybook": "build-storybook -s public",
+    "eject": "react-scripts eject",
+    "lint": "eslint .",
+    "prettier": "prettier --write .",
+    "storybook": "start-storybook -p 6006 -s public",
+    "test": "react-app-rewired test",
+    "watch": "react-app-rewired start"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -16,28 +26,6 @@
     "react-scripts": "4.0.3",
     "web-vitals": "^1.0.1"
   },
-  "scripts": {
-    "watch": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "test": "react-app-rewired test",
-    "eject": "react-scripts eject",
-    "storybook": "start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public",
-    "lint": "eslint .",
-    "prettier": "prettier --write ."
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
@@ -45,6 +33,7 @@
     "@storybook/node-logger": "^6.2.9",
     "@storybook/preset-create-react-app": "^3.1.7",
     "@storybook/react": "^6.2.9",
+    "cross-env": "^7.0.3",
     "customize-cra": "^1.0.0",
     "react-app-alias": "^2.2.0",
     "react-app-alias-ex": "^2.1.0",
@@ -52,5 +41,17 @@
   },
   "resolutions": {
     "babel-loader": "8.1.0"
+  },
+  "browserslist": {
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ],
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ]
   }
 }
