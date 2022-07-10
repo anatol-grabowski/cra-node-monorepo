@@ -1,0 +1,10 @@
+version: '3.4'
+services:
+  e2e-web:
+    build: .
+    container_name: e2e-web
+    volumes:
+      - .:/workdir
+    user: '${UID}:${GID}'
+    working_dir: /workdir
+    entrypoint: ./run.sh

@@ -1,5 +1,6 @@
-import * as http from 'http'
 import * as WebSocket from 'ws'
+import * as http from 'http'
+import { Socket } from 'net'
 
 /**
  * Assume `wsServer` to be created with `noServer: true` option.
@@ -19,7 +20,7 @@ export function createHttpWsServer(
 
   server.on('upgrade', (request, socket, head) => {
     console.log('upgrade to ws')
-    wsServer.handleUpgrade(request, socket, head, (ws) => {
+    wsServer.handleUpgrade(request, socket as Socket, head, (ws) => {
       wsServer.emit('connection', ws, request)
     })
   })

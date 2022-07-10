@@ -1,0 +1,17 @@
+{
+  "name": "e2e-web",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "yarn run webpack --mode=production",
+    "build:dev": "yarn run webpack --mode=development",
+    "start": "node ./build/main"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.1.2"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "@types/selenium-webdriver": "^4.0.9"
+  }
+}
